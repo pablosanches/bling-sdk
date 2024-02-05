@@ -1,0 +1,49 @@
+{
+    "name": "pablosanches/bling-sdk",
+    "type": "library",
+    "description": "SDK não oficial do Bling!",
+    "homepage": "https://github.com/pablosanches/bling-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pablo Sanches",
+            "email": "sanches.webmaster@gmail.com"
+        }
+    ],
+    "keywords": ["php", "bling", "sdk", "erp"],
+    "autoload": {
+        "psr-4": {
+            "PabloSanches\\Bling\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PabloSanches\\Bling\\": "tests/"
+        }
+    },
+    "bin": ["bin/bling-sdk"],
+    "scripts": {
+        "lint": "pint -v",
+        "test:lint": "pint --test -v",
+        "test:refactor": "rector --dry-run",
+        "test:types": "phpstan analyse --ansi",
+        "test:type-coverage": "pest --type-coverage --min=100",
+        "test": [
+            "@test:lint",
+            "@test:refactor",
+            "@test:types",
+            "@test:type-coverage",
+            "@test:unit"
+        ]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "symfony/var-dumper": "^6.4",
+        "mockery/mockery": "^1.6",
+        "squizlabs/php_codesniffer": "^3.8",
+        "phpunit/phpunit": "^10.5"
+    }
+}
