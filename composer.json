@@ -1,0 +1,44 @@
+{
+  "name": "pablosanches/bling-sdk",
+  "type": "library",
+  "description": "SDK não oficial do Bling! Api V3",
+  "homepage": "https://github.com/pablosanches/bling-sdk",
+  "license": "MIT",
+  "keywords": [
+    "bling",
+    "v3",
+    "api"
+  ],
+  "autoload": {
+    "psr-4": {
+      "PabloSanches\\Bling\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PabloSanches\\Bling\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "guzzlehttp/guzzle": "^7.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "squizlabs/php_codesniffer": "^3.9",
+    "mockery/mockery": "^1.6",
+    "fakerphp/faker": "^1.23",
+    "symfony/var-dumper": "^6.4",
+    "friendsofphp/php-cs-fixer": "^3.55"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "cs": "phpcs --standard=PSR12",
+    "csf": "phpcbf --standard=PSR12",
+    "deploy": [
+      "@cs",
+      "@test"
+    ]
+  },
+  "bin": ["bin/bling"]
+}

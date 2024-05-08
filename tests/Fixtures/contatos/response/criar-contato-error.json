@@ -1,0 +1,15 @@
+{
+  "error": {
+    "type": "VALIDATION_ERROR",
+    "message": "Não foi possível salvar o contato",
+    "description": "O contato não pode ser salvo, pois ocorreram problemas em sua validação.",
+    "fields": [
+      {
+        "code": 0,
+        "msg": "O campo CPF é inválido",
+        "element": "cnpj",
+        "namespace": "CONTATOS"
+      }
+    ]
+  }
+}

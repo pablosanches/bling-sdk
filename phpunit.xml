@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        bootstrap="./vendor/autoload.php"
+        colors="true"
+        testdox="true"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd"
+>
+    <coverage/>
+    <testsuites>
+        <testsuite name="BlingSDK">
+            <directory suffix="Test.php">./tests</directory>
+            <exclude>vendor</exclude>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>./src</directory>
+        </include>
+        <exclude>
+            <directory>./tests/</directory>
+            <directory>./vendor</directory>
+        </exclude>
+    </source>
+</phpunit>

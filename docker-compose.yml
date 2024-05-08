@@ -1,0 +1,7 @@
+services:
+  bling:
+    build: .
+    container_name: bling
+    tty: true
+    volumes:
+      - ./:/app
