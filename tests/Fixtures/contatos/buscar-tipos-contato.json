@@ -1,0 +1,13 @@
+{
+  "request": "",
+  "response": {
+    "200": {
+      "data": [
+        {
+          "id": 12345678,
+          "descricao": "Fornecedor"
+        }
+      ]
+    }
+  }
+}

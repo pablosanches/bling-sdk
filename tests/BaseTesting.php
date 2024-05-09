@@ -2,19 +2,29 @@
 
 namespace PabloSanches\Bling;
 
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use PabloSanches\Bling\Client as BlingClient;
 
 class BaseTesting extends TestCase
 {
-    private string $token = '601372c3b3f80525eacea11fef5e9b64393c7dde';
+    private string $token = 'fake-token';
 
-    protected function getBlingClient(): BlingClient
+    protected function getBlingClient(array $mockData): BlingClient
     {
-        return BlingClient::factory($this->token);
+        $response = $mockData['response'];
+        $handlers = [];
+        foreach ($response as $statusCode => $responseData) {
+            $handlers[] = new Response($statusCode, ['Content-Type' => 'application/json'], json_encode($responseData));
+        }
+        $handlerStack = HandlerStack::create(new MockHandler($handlers));
+        $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
+        return BlingClient::factory($this->token, [], $client);
     }
 
-    protected function getPayload($path)
+    protected function getMockFile($path)
     {
         $filepath = __DIR__ . '/Fixtures/' . $path;
         return json_decode(file_get_contents($filepath), true);

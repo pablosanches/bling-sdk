@@ -11,7 +11,6 @@ abstract class ResponseFactory
 {
     public static function fromResponse(ResponseInterface $response): DtoInterface
     {
-        exit(var_dump($response->getBody()->getContents()));
         $body = json_decode($response->getBody()->getContents(), true);
         if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
             return SuccessResponseDto::factory(['data' => $body['data']]);

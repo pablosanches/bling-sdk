@@ -1,16 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 namespace PabloSanches\Bling\Resource;
 
 use PabloSanches\Bling\Client as BlingClient;
+use PabloSanches\Bling\Http\BlingResponse;
 use PabloSanches\Bling\Http\HttpMethods;
-use PabloSanches\Bling\Http\ResponseFactory;
-use PabloSanches\Bling\Http\Uri;
 use PabloSanches\Bling\Resource\Dto\DtoInterface;
-use PabloSanches\Bling\Resource\Dto\ResponseErrorDto;
-use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractResource implements ResourceInterface
 {
@@ -25,20 +20,24 @@ abstract class AbstractResource implements ResourceInterface
         string $endpoint,
         ?DtoInterface $requestBody = null,
         ?DtoInterface $query = null
-    ): DtoInterface {
-        $query = is_a($query, DtoInterface::class) ? $query->export() : [];
+    ): BlingResponse {
         $options = [];
         if (!empty($requestBody)) {
             $options['json'] = $requestBody->export();
+        }
+
+        if (!empty($query)) {
+            $options['query'] = $query->export();
         }
 
         $response = $this->blingClient
             ->httpClient()
             ->request(
                 $method->value,
-                Uri::fromPath($endpoint, $query),
+                $endpoint,
                 $options
             );
-        return ResponseFactory::fromResponse($response);
+
+        return BlingResponse::factory($response);
     }
 }

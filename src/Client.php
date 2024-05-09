@@ -11,20 +11,20 @@ readonly class Client
 {
     protected function __construct(
         protected readonly string $token,
-        protected HttpClient $httpClient,
-        protected readonly array $params
+        protected readonly array $params,
+        protected HttpClient $httpClient
     ) {
     }
 
     public static function factory(
         string $token,
-        ?HttpClient $httpClient = null,
-        array $params = []
+        array $params = [],
+        ?HttpClient $httpClient = null
     ): self {
         if ($httpClient === null) {
             $httpClient = HttpFactory::factoryClient($token);
         }
-        return new self($token, $httpClient, $params);
+        return new self($token, $params, $httpClient);
     }
 
     public function httpClient(): HttpClient
