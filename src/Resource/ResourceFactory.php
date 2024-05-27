@@ -19,9 +19,9 @@ abstract class ResourceFactory
 
     public static function resourceNamespace(string $resourceName): string
     {
-        $className = mb_strtolower($resourceName);
+        $className = ucfirst($resourceName);
         $className = explode('_', $className);
-        $className = array_map('ucwords', $className);
+        $className = array_map('ucfirst', $className);
         $className = implode('', $className);
 
         $resourceNamespace = sprintf(

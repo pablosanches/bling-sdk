@@ -1,0 +1,12 @@
+{
+  "request": {
+    "descricao": "Eletrônicos"
+  },
+  "response": {
+    "201": {
+      "data": {
+        "id": 12345678
+      }
+    }
+  }
+}

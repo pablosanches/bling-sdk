@@ -1,5 +1,6 @@
-![alt text](https://developer.bling.com.br/build/assets/developer-0085d380.svg)
 # Bling! - API v3 - !! EM DESENVOLVIMENTO !!
+<img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="drawing" width="200"/>
+
 ![Workflow](https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg)
 
 Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utilizando a API V3.
@@ -7,6 +8,22 @@ Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](http
 Pule para:
 * [Introdução](#Introdução)
 * [Contatos](#Contatos)
+  * [Criando um contato](#Criando-um-contato)
+  * [Atualizando um contato](#Atualizando-um-contato)
+  * [Buscando todos os contatos](#Buscando-todos-os-contatos)
+  * [Buscando contato por ID](#Buscando-contato-por-ID)
+  * [Buscando tipos de um contato](#Buscando-tipos-de-um-contato)
+  * [Buscando contatos consumidores finais](#Buscando-contatos-consumidores-finais)
+  * [Atualizando a situação de um contato](#Atualizando-a-situação-de-um-contato)
+  * [Atualizando a situação de múltiplos contatos](#Atualizando-a-situação-de-múltiplos-contatos)
+  * [Remover um contato pelo seu ID](#Remover-um-contato-pelo-seu-ID)
+  * [Remover múltiplos contatos](#Remover-múltiplos-contatos)
+* [Categorias de Produtos](#Categorias-de-Produtos)
+  * [Criando uma categoria de produto](#Criando-uma-categoria-de-produto)
+  * [Atualizando uma categoria de produtos](#Atualizando-uma-categoria-de-produtos)
+  * [Buscando uma categoria de produtos pelo seu ID](#Buscando-uma-categoria-de-produtos-pelo-seu-ID)
+  * [Buscando todos as categorias de produtos](#Buscando-todos-as-categorias-de-produtos)
+  * [Removendo uma categoria de produto](#Removendo-uma-categoria-de-produto8)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -81,7 +98,7 @@ use PabloSanches\Bling\Client;
 ## Contatos
 [Ver documentação](https://developer.bling.com.br/referencia#/Contatos)
 
-### Criando um contato:
+### Criando um contato
 [Ver documentação](https://developer.bling.com.br/referencia#/Contatos/post_contatos)
 ```php
     use PabloSanches\Bling\Client;
@@ -95,7 +112,6 @@ use PabloSanches\Bling\Client;
     } catch (\Exception $e) {
         // $e->getMessage();
     }
-    
 ```
 
 ### Atualizando um contato:
@@ -112,7 +128,6 @@ use PabloSanches\Bling\Client;
     } catch (\Exception $e) {
         // $e->getMessage();
     }
-    
 ```
 
 ### Buscando todos os contatos:
@@ -231,6 +246,85 @@ use PabloSanches\Bling\Client;
         $blingClient = Client::factory('seu-token-aqui');
         $idsContatos = [1, 2, 3, 4];
         $response = $bling->contatos()->removerMultiplos($idContato);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Categorias de Produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos)
+
+### Criando uma categoria de produto:
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos/post_categorias_produtos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('seu-token-aqui');
+        $payload = [
+            'descricao' => 'Eletrônicos'
+        ];
+        $response = $bling->categoriasProdutos()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+    
+```
+
+### Atualizando uma categoria de produtos:
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos/put_categorias_produtos__idCategoriaProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('seu-token-aqui');
+        $payload = [
+            'descricao' => 'Eletrônicos - Atualizado'
+        ];
+        $idCategoria = 123456789;
+        $response = $bling->categoriasProdutos()->atualizar($idCategoria, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+    
+```
+
+### Buscando uma categoria de produtos pelo seu ID:
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos/get_categorias_produtos__idCategoriaProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('seu-token-aqui');
+        $idCategoria = 123456789;
+        $response = $bling->categoriasProdutos()->buscar($idCategoria);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscando todos as categorias de produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos/get_categorias_produtos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('seu-token-aqui');
+        $response = $bling->categoriasProdutos()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Removendo uma categoria de produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Produtos/delete_categorias_produtos__idCategoriaProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('seu-token-aqui');
+        $idCategoria = 123456789;
+        $response = $bling->categoriasProdutos()->remover($idCategoria);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
