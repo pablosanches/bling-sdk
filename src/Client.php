@@ -32,6 +32,12 @@ readonly class Client
         return $this->httpClient;
     }
 
+    public function getMultilojas(): ?string
+    {
+        return $this->params['multilojas'] ?? null;
+    }
+
+
     public function __call(string $resourceName, array $arguments = []): ResourceInterface
     {
         return ResourceFactory::factory($this, $resourceName, $arguments);

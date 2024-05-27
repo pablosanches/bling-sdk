@@ -12,7 +12,7 @@ class BaseTesting extends TestCase
 {
     private string $token = 'fake-token';
 
-    protected function getBlingClient(array $mockData): BlingClient
+    protected function getBlingClient(array $mockData, array $params = []): BlingClient
     {
         $response = $mockData['response'];
         $handlers = [];
@@ -21,7 +21,7 @@ class BaseTesting extends TestCase
         }
         $handlerStack = HandlerStack::create(new MockHandler($handlers));
         $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
-        return BlingClient::factory($this->token, [], $client);
+        return BlingClient::factory($this->token, $params, $client);
     }
 
     protected function getMockFile($path)

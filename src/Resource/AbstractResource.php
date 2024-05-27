@@ -40,4 +40,15 @@ abstract class AbstractResource implements ResourceInterface
 
         return BlingResponse::factory($response);
     }
+
+    public function hasMultilojas(): bool
+    {
+        return !empty($this->blingClient->getMultilojas());
+    }
+
+    public function attachMultilojasPayload(array $payload): array
+    {
+        $payload['loja'] = ['id' => $this->blingClient->getMultilojas()];
+        return $payload;
+    }
 }

@@ -24,6 +24,12 @@ Pule para:
   * [Buscando uma categoria de produtos pelo seu ID](#Buscando-uma-categoria-de-produtos-pelo-seu-ID)
   * [Buscando todos as categorias de produtos](#Buscando-todos-as-categorias-de-produtos)
   * [Removendo uma categoria de produto](#Removendo-uma-categoria-de-produto8)
+* [Categorias Lojas (Multilojas)](#Categorias-lojas)
+  * [Criando um vínculo de uma categoria de produto](#Criando-um-vínculo-de-uma-categoria-de-produto)
+  * [Atualizando um vínculo de uma categoria de produto](#Atualizando-um-vínculo-de-uma-categoria-de-produto)
+  * [Buscando um vínculo de categoria de produto pelo seu ID](#Buscando-um-vínculo-de-categoria-de-produto-pelo-seu-ID)
+  * [Buscando todos os vínculos de categorias de produtos](#Buscando-todos-os-vínculos-de-categorias-de-produtos)
+  * [Removendo um vínculo de uma categoria de produto](#Removendo-um-vínculo-de-uma-categoria-de-produto)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -35,7 +41,7 @@ Exemplo:
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'nome' => 'Pablo Sanches'
         ];
@@ -50,7 +56,7 @@ Exemplo:
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'nome' => 'Pablo Sanches'
         ];
@@ -80,7 +86,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         
         $filtros = [
             'pagina' => 1,
@@ -104,7 +110,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'nome' => 'Pablo Sanches'
         ];
@@ -120,7 +126,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'nome' => 'Pablo Sanches'
         ];
@@ -136,7 +142,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         
         $filtros = [
             'pagina' => 1,
@@ -157,7 +163,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idContato = 1; 
         $response = $bling->contatos()->buscar($idContato);
     } catch (\Exception $e) {
@@ -171,7 +177,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idContato = 1; 
         $response = $bling->contatos()->buscarTipos($idContato);
     } catch (\Exception $e) {
@@ -185,7 +191,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idContato = 1; 
         $response = $bling->contatos()->buscarConsumidoresFinais($idContato);
     } catch (\Exception $e) {
@@ -199,7 +205,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idContato = 1; 
         $situacao = 'A';
         $response = $bling->contatos()->atualizarSituacao($idContato, $situacao);
@@ -214,7 +220,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idsContatos = [1, 2, 3, 4]; 
         $situacao = 'A';
         $response = $bling->contatos()->alterarSituacoesMultiplos($idsContatos, $situacao);
@@ -229,7 +235,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idContato = 1;
         $response = $bling->contatos()->remover($idContato);
     } catch (\Exception $e) {
@@ -243,7 +249,7 @@ use PabloSanches\Bling\Client;
 use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idsContatos = [1, 2, 3, 4];
         $response = $bling->contatos()->removerMultiplos($idContato);
     } catch (\Exception $e) {
@@ -260,7 +266,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'descricao' => 'Eletrônicos'
         ];
@@ -277,7 +283,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [
             'descricao' => 'Eletrônicos - Atualizado'
         ];
@@ -295,7 +301,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idCategoria = 123456789;
         $response = $bling->categoriasProdutos()->buscar($idCategoria);
     } catch (\Exception $e) {
@@ -309,7 +315,7 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $response = $bling->categoriasProdutos()->buscarTodos();
     } catch (\Exception $e) {
         // $e->getMessage();
@@ -322,9 +328,101 @@ use PabloSanches\Bling\Client;
     use PabloSanches\Bling\Client;
     
     try {
-        $blingClient = Client::factory('seu-token-aqui');
+        $blingClient = Client::factory('<seu-token-aqui>');
         $idCategoria = 123456789;
         $response = $bling->categoriasProdutos()->remover($idCategoria);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Categorias Lojas
+*(Multilojas)*
+
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas)
+
+Para utilizar recursos do multilojas, você precisa especificar o parâmetro ***multilojas*** na construção do Client da SDK.
+
+Exemplo:
+```php
+use PabloSanches\Bling\Client;
+$blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integracao-aqui>']);
+```
+
+### Criando um vínculo de uma categoria de produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas/post_categorias_lojas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $payload = [
+            'descricao' => 'Categoria de produto vinculado à loja',
+            'codigo' => '12345678',
+            'categoriaProduto' => ['id' => 12345678]
+        ];
+        $response = $bling->categoriasLojas()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Atualizando um vínculo de uma categoria de produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas/put_categorias_lojas__idCategoriaLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $payload = [
+            'descricao' => 'Categoria de produto vinculado à loja',
+            'codigo' => '12345678',
+            'categoriaProduto' => ['id' => 12345678]
+        ];
+        $idVinculo = 123456789;
+        $response = $bling->categoriasLojas()->atualizar($idVinculo, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscando um vínculo de categoria de produto pelo seu ID
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas/get_categorias_lojas__idCategoriaLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;
+        $response = $bling->categoriasLojas()->buscar($idVinculo);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscando todos os vínculos de categorias de produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas/get_categorias_lojas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;
+        $response = $bling->categoriasLojas()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Removendo um vínculo de uma categoria de produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Categorias%20-%20Lojas/delete_categorias_lojas__idCategoriaLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;
+        $response = $bling->categoriasLojas()->remover($idVinculo);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
