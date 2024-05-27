@@ -1,5 +1,5 @@
 ![alt text](https://developer.bling.com.br/build/assets/developer-0085d380.svg)
-# Bling! - API v3
+# Bling! - API v3 - !! EM DESENVOLVIMENTO !!
 ![Workflow](https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg)
 
 Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utilizando a API V3.
