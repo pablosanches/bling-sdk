@@ -3,7 +3,6 @@
 namespace PabloSanches\Bling\Resource;
 
 use PabloSanches\Bling\BaseTesting;
-use PabloSanches\Bling\Client as BlingClient;
 use PabloSanches\Bling\Resource\CategoriasProdutos\CategoriasProdutos;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\TestDox;
