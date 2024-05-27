@@ -72,7 +72,7 @@ use PabloSanches\Bling\Client;
             'dataInclusaoInicial' => '2024-01-01'
         ];
         
-        $response = $bling->contatos()->todos($filtros);
+        $response = $bling->contatos()->buscarTodos($filtros);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
@@ -108,7 +108,7 @@ use PabloSanches\Bling\Client;
         $payload = [
             'nome' => 'Pablo Sanches'
         ];
-        $response = $bling->contatos()->alterar($id, $payload);
+        $response = $bling->contatos()->atualizar($id, $payload);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
@@ -130,7 +130,7 @@ use PabloSanches\Bling\Client;
             'dataInclusaoInicial' => '2024-01-01'
         ];
         
-        $response = $bling->contatos()->todos($filtros);
+        $response = $bling->contatos()->buscarTodos($filtros);
     } catch (\Exception $e) {
         // $e->getMessage();
     }

@@ -10,29 +10,48 @@ use PabloSanches\Bling\Resource\Contatos\Dto\AlterarSituacoesContatoRequestDto;
 use PabloSanches\Bling\Resource\Contatos\Dto\AlteraSituacaoRequestDto;
 use PabloSanches\Bling\Resource\Contatos\Dto\BuscarTodosContatosRequestDto;
 use PabloSanches\Bling\Resource\Contatos\Dto\PersistirContatoRequestDto;
-use PabloSanches\Bling\Resource\Contatos\Dto\RemoverMultiplosContatosRequestDto;
 
 class Contatos extends AbstractResource
 {
-    public function removerMultiplos(array $idsContatos): BlingResponse
+    public function criar(array $payload): BlingResponse
     {
+        $requestDto = PersistirContatoRequestDto::factory($payload);
         return $this->request(
-            HttpMethods::DELETE,
-            Uri::fromPath("/contatos", ['idsContatos' => $idsContatos])
+            HttpMethods::POST,
+            Uri::fromPath('/contatos'),
+            $requestDto
         );
     }
 
-    public function remover(int $idContato): BlingResponse
+    public function atualizar(int $id, array $payload): BlingResponse
     {
+        $requestDto = PersistirContatoRequestDto::factory($payload);
         return $this->request(
-            HttpMethods::DELETE,
-            Uri::fromPath("/contatos/{$idContato}")
+            HttpMethods::PUT,
+            Uri::fromPath("/contatos/{$id}"),
+            $requestDto
         );
     }
 
-    public function todos(array $params = []): BlingResponse
+    public function remover(int $id): BlingResponse
     {
-        $queryDto = BuscarTodosContatosRequestDto::factory($params);
+        return $this->request(
+            HttpMethods::DELETE,
+            Uri::fromPath("/contatos/{$id}")
+        );
+    }
+
+    public function buscar(int $id): BlingResponse
+    {
+        return $this->request(
+            HttpMethods::GET,
+            Uri::fromPath("/contatos/{$id}")
+        );
+    }
+
+    public function buscarTodos(array $options = []): BlingResponse
+    {
+        $queryDto = BuscarTodosContatosRequestDto::factory($options);
         return $this->request(
             HttpMethods::GET,
             Uri::fromPath('/contatos'),
@@ -40,19 +59,19 @@ class Contatos extends AbstractResource
         );
     }
 
-    public function buscar(int $idContato): BlingResponse
+    public function removerMultiplos(array $ids): BlingResponse
     {
         return $this->request(
-            HttpMethods::GET,
-            Uri::fromPath("/contatos/{$idContato}")
+            HttpMethods::DELETE,
+            Uri::fromPath("/contatos", ['idsContatos' => $ids])
         );
     }
 
-    public function buscarTipos(int $idContato): BlingResponse
+    public function buscarTipos(int $id): BlingResponse
     {
         return $this->request(
             HttpMethods::GET,
-            Uri::fromPath("/contatos/{$idContato}/tipos")
+            Uri::fromPath("/contatos/{$id}/tipos")
         );
     }
 
@@ -64,45 +83,25 @@ class Contatos extends AbstractResource
         );
     }
 
-    public function atualizarSituacao(int $idContato, string $situacao): BlingResponse
+    public function atualizarSituacao(int $id, string $situacao): BlingResponse
     {
         $requestDto = AlteraSituacaoRequestDto::factory(['situacao' => $situacao]);
         return $this->request(
             HttpMethods::PATCH,
-            Uri::fromPath("/contatos/{$idContato}/situacoes"),
+            Uri::fromPath("/contatos/{$id}/situacoes"),
             $requestDto
         );
     }
 
-    public function criar(array $params): BlingResponse
-    {
-        $requestDto = PersistirContatoRequestDto::factory($params);
-        return $this->request(
-            HttpMethods::POST,
-            Uri::fromPath('/contatos'),
-            $requestDto
-        );
-    }
-
-    public function alterarSituacoesMultiplos(array $idsContatos, string $situacao): BlingResponse
+    public function alterarSituacoesMultiplos(array $ids, string $situacao): BlingResponse
     {
         $requestDto = AlterarSituacoesContatoRequestDto::factory([
-            'idsContatos' => $idsContatos,
+            'idsContatos' => $ids,
             'situacao' => $situacao
         ]);
         return $this->request(
             HttpMethods::POST,
             Uri::fromPath('/contatos/situacoes'),
-            $requestDto
-        );
-    }
-
-    public function alterar(int $idContato, array $params): BlingResponse
-    {
-        $requestDto = PersistirContatoRequestDto::factory($params);
-        return $this->request(
-            HttpMethods::PUT,
-            Uri::fromPath("/contatos/{$idContato}"),
             $requestDto
         );
     }

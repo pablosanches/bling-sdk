@@ -27,7 +27,7 @@ class ContatosTest extends BaseTesting
         $mockData = $this->getMockFile('contatos/alterar-contato.json');
         $blingClient = $this->getBlingClient($mockData);
 
-        $response = $blingClient->contatos()->alterar($id, $mockData['request']);
+        $response = $blingClient->contatos()->atualizar($id, $mockData['request']);
         self::assertEquals(204, $response->getStatusCode());
     }
 
@@ -37,7 +37,7 @@ class ContatosTest extends BaseTesting
         $mockData = $this->getMockFile('contatos/buscar-todos-contatos.json');
         $blingClient = $this->getBlingClient($mockData);
 
-        $response = $blingClient->contatos()->todos();
+        $response = $blingClient->contatos()->buscarTodos();
         self::assertEquals(200, $response->getStatusCode());
         self::assertGreaterThan(0, count($response->getData()));
     }
