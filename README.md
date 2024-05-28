@@ -24,12 +24,22 @@ Pule para:
   * [Buscando uma categoria de produtos pelo seu ID](#Buscando-uma-categoria-de-produtos-pelo-seu-ID)
   * [Buscando todos as categorias de produtos](#Buscando-todos-as-categorias-de-produtos)
   * [Removendo uma categoria de produto](#Removendo-uma-categoria-de-produto8)
-* [Categorias Lojas (Multilojas)](#Categorias-lojas)
+* [Categorias Lojas](#Categorias-lojas)
   * [Criando um vínculo de uma categoria de produto](#Criando-um-vínculo-de-uma-categoria-de-produto)
   * [Atualizando um vínculo de uma categoria de produto](#Atualizando-um-vínculo-de-uma-categoria-de-produto)
   * [Buscando um vínculo de categoria de produto pelo seu ID](#Buscando-um-vínculo-de-categoria-de-produto-pelo-seu-ID)
   * [Buscando todos os vínculos de categorias de produtos](#Buscando-todos-os-vínculos-de-categorias-de-produtos)
   * [Removendo um vínculo de uma categoria de produto](#Removendo-um-vínculo-de-uma-categoria-de-produto)
+* [Depósitos](#Depósitos)
+  * [Criando um depósito](#Criando-um-depósito)
+  * [Alterando um depósito](#Alterando-um-depósito)
+  * [Obtendo um depósito pelo ID](#Obtendo-um-depósito-pelo-ID)
+  * [Obtendo todos os depósitos](#Obtendo-todos-os-depósitos)
+* [Estoques](#Estoques)
+  * [Criando um registro de estoque](#Criando-um-registro-de-estoque)
+  * [Atualizando um registro de estoque](#Atualizando-um-registro-de-estoque)
+  * [Obtém o saldo em estoque de produtos em todos os depósitos](#Obtém-o-saldo-em-estoque-de-produtos-em-todos-os-depósitos)
+  * [Obtém o saldo em estoque de produtos pelo ID do depósito](#Obtém-o-saldo-em-estoque-de-produtos-pelo-ID-do-depósito)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -274,7 +284,6 @@ use PabloSanches\Bling\Client;
     } catch (\Exception $e) {
         // $e->getMessage();
     }
-    
 ```
 
 ### Atualizando uma categoria de produtos:
@@ -423,6 +432,156 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
         $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
         $idVinculo = 123456789;
         $response = $bling->categoriasLojas()->remover($idVinculo);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Depósitos
+[Ver documentação](https://developer.bling.com.br/referencia#/Dep%C3%B3sitos)
+
+### Criando um depósito
+[Ver documentação](https://developer.bling.com.br/referencia#/Dep%C3%B3sitos/post_depositos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [
+            'descricao' => 'Depósito Geral',
+            'situacao' => 1,
+            'padrao' => false,
+            'desconsiderarSaldo' => false
+        ];
+        $response = $bling->depositos()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterando um depósito
+[Ver documentação](https://developer.bling.com.br/referencia#/Dep%C3%B3sitos/put_depositos__idDeposito_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [
+            'descricao' => 'Depósito Geral',
+            'situacao' => 1,
+            'padrao' => false,
+            'desconsiderarSaldo' => false
+        ];
+        $idDeposito = 123456789;
+        $response = $bling->depositos()->atualizar($idDeposito, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtendo um depósito pelo ID
+[Ver documentação](https://developer.bling.com.br/referencia#/Dep%C3%B3sitos/get_depositos__idDeposito_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idDeposito = 123456789;
+        $response = $bling->depositos()->buscar($idDeposito);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtendo todos os depósitos
+[Ver documentação](https://developer.bling.com.br/referencia#/Dep%C3%B3sitos/get_depositos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $response = $bling->depositos()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Estoques
+[Ver documentação](https://developer.bling.com.br/referencia#/Estoques)
+
+### Criando um registro de estoque
+[Ver documentação](https://developer.bling.com.br/referencia#/Estoques/post_estoques)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [
+            "produto" => ['id' => 123456789],
+            "deposito" => ['id' => 123456789],
+            "operacao" => "B",
+            "preco" => 1500.75,
+            "custo" => 1500.75,
+            "quantidade" => 50.75,
+            "observacoes" => "Observações de estoque"
+        ];
+        $response = $bling->estoques()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Atualizando um registro de estoque
+[Ver documentação](https://developer.bling.com.br/referencia#/Estoques/put_estoques__idEstoque_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [
+            "produto" => ['id' => 123456789],
+            "deposito" => ['id' => 123456789],
+            "operacao" => "B",
+            "preco" => 1500.75,
+            "custo" => 1500.75,
+            "quantidade" => 50.75,
+            "observacoes" => "Observações de estoque"
+        ];
+        $idDoEstoque = 123456789;
+        $response = $bling->estoques()->atualizar($idDoEstoque, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtém o saldo em estoque de produtos em todos os depósitos
+[Ver documentação](https://developer.bling.com.br/referencia#/Estoques/get_estoques_saldos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $filtros = [
+            "idsProdutos" => ['id' => 123456789]
+        ];
+        $response = $bling->estoques()->buscarTodos($filtros);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtém o saldo em estoque de produtos pelo ID do depósito
+[Ver documentação](https://developer.bling.com.br/referencia#/Estoques/get_estoques_saldos__idDeposito_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $filtros = [
+            "idDeposito" => 123456789,
+            "idsProdutos" => ['id' => 123456789]
+        ];
+        $response = $bling->estoques()->buscarPorDeposito($filtros);
     } catch (\Exception $e) {
         // $e->getMessage();
     }

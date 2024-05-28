@@ -1,0 +1,15 @@
+{
+  "request": {
+    "descricao": "Depósito Geral",
+    "situacao": 1,
+    "padrao": false,
+    "desconsiderarSaldo": false
+  },
+  "response": {
+    "201": {
+      "data": {
+        "id": 12345678
+      }
+    }
+  }
+}
