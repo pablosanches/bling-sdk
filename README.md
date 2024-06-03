@@ -1,4 +1,4 @@
-# Bling! - API v3 - !! EM DESENVOLVIMENTO !!
+# Bling! - API v3
 <img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="Bling!" width="400" style="text-align: center;"/>
 
 ![Workflow](https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg)
