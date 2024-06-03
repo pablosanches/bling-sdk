@@ -9,11 +9,6 @@ use PHPUnit\Framework\Attributes\TestDox;
 
 class ProdutoTest extends BaseTesting
 {
-    public function getBling()
-    {
-        return Client::factory('7cd13bf440c4e9eae70fed0fdabe1a6bd791a224');
-    }
-
     #[TestDox('Criando um novo produto')]
     public function testCreateProduct(): int
     {

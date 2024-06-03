@@ -3,6 +3,13 @@
 namespace PabloSanches\Bling;
 
 use PabloSanches\Bling\Http\HttpFactory;
+use PabloSanches\Bling\Resource\CategoriasLojas\CategoriasLojas;
+use PabloSanches\Bling\Resource\CategoriasProdutos\CategoriasProdutos;
+use PabloSanches\Bling\Resource\Contatos\Contatos;
+use PabloSanches\Bling\Resource\Depositos\Depositos;
+use PabloSanches\Bling\Resource\Estoques\Estoques;
+use PabloSanches\Bling\Resource\Produtos\Produtos;
+use PabloSanches\Bling\Resource\ProdutosLojas\ProdutosLojas;
 use PabloSanches\Bling\Resource\ResourceFactory;
 use PabloSanches\Bling\Resource\ResourceInterface;
 use GuzzleHttp\Client as HttpClient;
@@ -37,9 +44,38 @@ readonly class Client
         return $this->params['multilojas'] ?? null;
     }
 
-
-    public function __call(string $resourceName, array $arguments = []): ResourceInterface
+    public function contatos(array $params = []): Contatos
     {
-        return ResourceFactory::factory($this, $resourceName, $arguments);
+        return new Contatos($this, $params);
+    }
+
+    public function categoriasProdutos(array $params = []): CategoriasProdutos
+    {
+        return new CategoriasProdutos($this, $params);
+    }
+
+    public function categoriasLojas(array $params = []): CategoriasLojas
+    {
+        return new CategoriasLojas($this, $params);
+    }
+
+    public function depositos(array $params = []): Depositos
+    {
+        return new Depositos($this, $params);
+    }
+
+    public function estoques(array $params = []): Estoques
+    {
+        return new Estoques($this, $params);
+    }
+
+    public function produtos(array $params = []): Produtos
+    {
+        return new Produtos($this, $params);
+    }
+
+    public function produtosLojas(array $params = []): ProdutosLojas
+    {
+        return new ProdutosLojas($this, $params);
     }
 }

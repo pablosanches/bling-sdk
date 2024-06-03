@@ -49,6 +49,12 @@ Pule para:
   * [Obter todos os produtos paginados](#Obter-todos-os-produtos-paginados)
   * [Excluir um produto pelo seu id](#Excluir-um-produto-pelo-seu-id)
   * [Excluir múltiplos produtos](#Excluir-múltiplos-produtos)
+* [Produtos lojas](#Produtos-lojas)
+  * [Criar vínculo de produtos com lojas](#Criar-vínculo-de-produtos-com-lojas)
+  * [Altera vínculo de produtos com lojas](#Altera-vínculo-de-produtos-com-lojas)
+  * [Obtém um vínculo de produtos com lojas](#Obtém-um-vínculo-de-produtos-com-lojas)
+  * [Obtém um vínculo de todos produtos com lojas](#Obtém-um-vínculo-de-todos-produtos-com-lojas)
+  * [Remove o vínculo de produtos com lojas](#Remove-o-vínculo-de-produtos-com-lojas)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -708,6 +714,79 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
         $blingClient = Client::factory('<seu-token-aqui>');
         $idProduto = [123456789, 123456789, 123456789];
         $response = $bling->produtos()->removerMultiplos($idProduto);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Produtos lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas)
+
+### Criar vínculo de produtos com lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas/post_produtos_lojas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $payload = [...];
+        $response = $bling->produtosLojas()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Altera vínculo de produtos com lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas/put_produtos_lojas__idProdutoLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;
+        $payload = [...];
+        $response = $bling->produtosLojas()->atualizar($idVinculo, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtém um vínculo de produtos com lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas/get_produtos_lojas__idProdutoLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;
+        $response = $bling->produtosLojas()->buscar($idVinculo);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obtém um vínculo de todos produtos com lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas/get_produtos_lojas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');        
+        $response = $bling->produtosLojas()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Remove o vínculo de produtos com lojas
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas/delete_produtos_lojas__idProdutoLoja_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
+        $idVinculo = 123456789;        
+        $response = $bling->produtosLojas()->remover($idVinculo);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
