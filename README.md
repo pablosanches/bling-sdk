@@ -40,6 +40,15 @@ Pule para:
   * [Atualizando um registro de estoque](#Atualizando-um-registro-de-estoque)
   * [Obtém o saldo em estoque de produtos em todos os depósitos](#Obtém-o-saldo-em-estoque-de-produtos-em-todos-os-depósitos)
   * [Obtém o saldo em estoque de produtos pelo ID do depósito](#Obtém-o-saldo-em-estoque-de-produtos-pelo-ID-do-depósito)
+* [Produtos](#Produtos)
+  * [Criar um produto](#Criar-um-produto)
+  * [Alterar um produto](#Alterar-um-produto)
+  * [Alterar a situação de múltiplos produtos](#Alterar-a-situação-de-múltiplos-produtos)
+  * [Alterar a situação de um produto](#Alterar-a-situação-de-um-produto)
+  * [Obter um produto pelo seu ID](#Obter-um-produto-pelo-seu-ID)
+  * [Obter todos os produtos paginados](#Obter-todos-os-produtos-paginados)
+  * [Excluir um produto pelo seu id](#Excluir-um-produto-pelo-seu-id)
+  * [Excluir múltiplos produtos](#Excluir-múltiplos-produtos)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -582,6 +591,123 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
             "idsProdutos" => ['id' => 123456789]
         ];
         $response = $bling->estoques()->buscarPorDeposito($filtros);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos)
+
+### Criar um produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/post_produtos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $dadosProdutos = [...];
+        $response = $bling->produtos()->criar($dadosProdutos);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterar um produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/put_produtos__idProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idProduto = 123456789;
+        $dadosProdutos = [...];
+        $response = $bling->produtos()->atualizar($idProduto, $dadosProdutos);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterar a situação de múltiplos produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/post_produtos_situacoes)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idsProdutos = [123456789, 123456789];
+        $situacao = 'A';
+        $response = $bling->produtos()->alterarSituacaoMultiplosProdutos($idsProdutos, $situacao);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterar a situação de um produto
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/patch_produtos__idProduto__situacoes)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idProduto = 123456789;
+        $situacao = 'A';
+        $response = $bling->produtos()->alterarSituacaoProduto($idProduto, $situacao);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obter um produto pelo seu ID
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/get_produtos__idProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idProduto = 123456789;
+        $response = $bling->produtos()->buscar($idProduto);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Obter todos os produtos paginados
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/get_produtos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $response = $bling->produtos()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Excluir um produto pelo seu id
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/delete_produtos__idProduto_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idProduto = 123456789;
+        $response = $bling->produtos()->remover($idProduto);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Excluir múltiplos produtos
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos/delete_produtos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idProduto = [123456789, 123456789, 123456789];
+        $response = $bling->produtos()->removerMultiplos($idProduto);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
