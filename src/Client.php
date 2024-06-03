@@ -10,8 +10,7 @@ use PabloSanches\Bling\Resource\Depositos\Depositos;
 use PabloSanches\Bling\Resource\Estoques\Estoques;
 use PabloSanches\Bling\Resource\Produtos\Produtos;
 use PabloSanches\Bling\Resource\ProdutosLojas\ProdutosLojas;
-use PabloSanches\Bling\Resource\ResourceFactory;
-use PabloSanches\Bling\Resource\ResourceInterface;
+use PabloSanches\Bling\Resource\ProdutosVariacoes\ProdutosVariacoes;
 use GuzzleHttp\Client as HttpClient;
 
 readonly class Client
@@ -77,5 +76,10 @@ readonly class Client
     public function produtosLojas(array $params = []): ProdutosLojas
     {
         return new ProdutosLojas($this, $params);
+    }
+
+    public function produtosVariacoes(array $params = []): ProdutosVariacoes
+    {
+        return new ProdutosVariacoes($this, $params);
     }
 }

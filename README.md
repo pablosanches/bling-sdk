@@ -49,12 +49,16 @@ Pule para:
   * [Obter todos os produtos paginados](#Obter-todos-os-produtos-paginados)
   * [Excluir um produto pelo seu id](#Excluir-um-produto-pelo-seu-id)
   * [Excluir múltiplos produtos](#Excluir-múltiplos-produtos)
-* [Produtos lojas](#Produtos-lojas)
+* [Produtos Lojas](#Produtos-Lojas)
   * [Criar vínculo de produtos com lojas](#Criar-vínculo-de-produtos-com-lojas)
   * [Altera vínculo de produtos com lojas](#Altera-vínculo-de-produtos-com-lojas)
   * [Obtém um vínculo de produtos com lojas](#Obtém-um-vínculo-de-produtos-com-lojas)
   * [Obtém um vínculo de todos produtos com lojas](#Obtém-um-vínculo-de-todos-produtos-com-lojas)
   * [Remove o vínculo de produtos com lojas](#Remove-o-vínculo-de-produtos-com-lojas)
+* [Produtos Variações](#Produtos-Variações)
+  * [Obter um produto e suas variações](#Obter-um-produto-e-suas-variações)
+  * [Alterar o nome do atributo nas variações](#Alterar-o-nome-do-atributo-nas-variações)
+  * [Retorna o produto pai com combinações de novas variações](#Retorna-o-produto-pai-com-combinações-de-novas-variações)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -719,7 +723,7 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
     }
 ```
 
-## Produtos lojas
+## Produtos Lojas
 [Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Lojas)
 
 ### Criar vínculo de produtos com lojas
@@ -787,6 +791,50 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
         $blingClient = Client::factory('<seu-token-aqui>', '<id-integracao-aqui>');
         $idVinculo = 123456789;        
         $response = $bling->produtosLojas()->remover($idVinculo);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Produtos Variações
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Varia%C3%A7%C3%B5es)
+
+### Obter um produto e suas variações
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Varia%C3%A7%C3%B5es/get_produtos_variacoes__idProdutoPai_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $response = $bling->produtosVariacoes()->buscar($idProdutoPai);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterar o nome do atributo nas variações
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Varia%C3%A7%C3%B5es/patch_produtos_variacoes__idProdutoPai__atributos)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [...];
+        $response = $bling->produtosVariacoes()->alterarNomeAtributo($idProdutoPai, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Retorna o produto pai com combinações de novas variações
+[Ver documentação](https://developer.bling.com.br/referencia#/Produtos%20-%20Varia%C3%A7%C3%B5es/post_produtos_variacoes_atributos_gerar_combinacoes)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [...];
+        $response = $bling->produtosVariacoes()->gerarCombinacoes($payload);
     } catch (\Exception $e) {
         // $e->getMessage();
     }

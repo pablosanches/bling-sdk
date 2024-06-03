@@ -16,12 +16,16 @@ class BlingResponse
     {
         $content = $response->getBody()->getContents();
         if (!empty($content)) {
-            $content = json_decode(
-                $content,
-                true,
-                512,
-                JSON_THROW_ON_ERROR
-            );
+            try {
+                $content = json_decode(
+                    $content,
+                    true,
+                    512,
+                    JSON_THROW_ON_ERROR
+                );
+            } catch (\JsonException $e) {
+                $content = $e->getMessage();
+            }
         }
         return new self(
             $response->getStatusCode(),
