@@ -1,0 +1,23 @@
+{
+  "request": {
+    "codigo": "ASDF1234",
+    "preco": 25.99,
+    "precoPromocional": 22.99,
+    "produto": {
+      "id": 16257679308
+    },
+    "loja": {
+      "id": 204952143
+    },
+    "fornecedorLoja": {},
+    "marcaLoja": {},
+    "categoriasProdutos": []
+  },
+  "response": {
+    "201": {
+      "data": {
+        "id": 771674474
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "response": {
+    "200": {
+      "data": [
+        {
+          "categoriasProdutos": [
+            {
+              "id": 12345678
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
