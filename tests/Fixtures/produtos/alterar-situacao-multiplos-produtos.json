@@ -1,0 +1,11 @@
+{
+  "request": {
+    "idsProdutos": [
+      12345678
+    ],
+    "situacao": "A"
+  },
+  "response": {
+    "204": ""
+  }
+}
