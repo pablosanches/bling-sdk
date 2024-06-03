@@ -3,17 +3,11 @@
 namespace PabloSanches\Bling\Resource;
 
 use PabloSanches\Bling\BaseTesting;
-use PabloSanches\Bling\Client;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\TestDox;
 
 class ProdutosLojasTest extends BaseTesting
 {
-    public function getBling()
-    {
-        return Client::factory('7cd13bf440c4e9eae70fed0fdabe1a6bd791a224');
-    }
-
     #[TestDox('Criando vínculo de multilojas de um produto')]
     public function testCreateProductLink(): int
     {

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "atributoAntigo": "Cor",
+    "atributoNovo": "Coloração"
+  },
+  "response": {
+    "200": {
+      "data": [
+        {
+          "id": 12345678
+        }
+      ]
+    }
+  }
+}
