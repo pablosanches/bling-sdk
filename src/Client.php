@@ -8,6 +8,7 @@ use PabloSanches\Bling\Resource\CategoriasProdutos\CategoriasProdutos;
 use PabloSanches\Bling\Resource\Contatos\Contatos;
 use PabloSanches\Bling\Resource\Depositos\Depositos;
 use PabloSanches\Bling\Resource\Estoques\Estoques;
+use PabloSanches\Bling\Resource\PedidosVendas\PedidosVendas;
 use PabloSanches\Bling\Resource\Produtos\Produtos;
 use PabloSanches\Bling\Resource\ProdutosLojas\ProdutosLojas;
 use PabloSanches\Bling\Resource\ProdutosVariacoes\ProdutosVariacoes;
@@ -81,5 +82,10 @@ readonly class Client
     public function produtosVariacoes(array $params = []): ProdutosVariacoes
     {
         return new ProdutosVariacoes($this, $params);
+    }
+
+    public function pedidosVendas(array $params = []): PedidosVendas
+    {
+        return new PedidosVendas($this, $params);
     }
 }

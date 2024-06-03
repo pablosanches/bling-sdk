@@ -59,6 +59,21 @@ Pule para:
   * [Obter um produto e suas variações](#Obter-um-produto-e-suas-variações)
   * [Alterar o nome do atributo nas variações](#Alterar-o-nome-do-atributo-nas-variações)
   * [Retorna o produto pai com combinações de novas variações](#Retorna-o-produto-pai-com-combinações-de-novas-variações)
+* [Pedidos Vendas](#Pedidos-Vendas)
+  * [Criar um pedido de venda](#Obter-um-produto-e-suas-variações)
+  * [Atualizar um pedido de venda](#Atualizar-um-pedido-de-venda)
+  * [Remover um pedido de venda](#Remover-um-pedido-de-venda)
+  * [Remover múltiplos pedidos de vendas](#Remover-múltiplos-pedidos-de-vendas)
+  * [Buscar um pedido de venda](#Buscar-um-pedido-de-venda)
+  * [Buscar todos os pedidos de venda](#Buscar-todos-os-pedidos-de-venda)
+  * [Alterar a situação de um pedido de venda](#Alterar-a-situação-de-um-pedido-de-venda)
+  * [Lançar estoque de um pedido de venda especificando o depósito](#Lançar-estoque-de-um-pedido-de-venda-especificando-o-depósito)
+  * [Lançar estoque de um pedido de venda no depósito padrão](#Lançar-estoque-de-um-pedido-de-venda-no-depósito-padrão)
+  * [Estornar o estoque de um pedido de venda](#Estornar-o-estoque-de-um-pedido-de-venda)
+  * [Lançar as contas de um pedido de venda](#Lançar-as-contas-de-um-pedido-de-venda)
+  * [Estornar as contas de um pedido de venda](#Estornar-as-contas-de-um-pedido-de-venda)
+  * [Gerar NFE de um pedido de venda](#Gerar-NFE-de-um-pedido-de-venda)
+  * [Gerar NFCE de um pedido de venda](#Gerar-NFCE-de-um-pedido-de-venda)
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -835,6 +850,220 @@ $blingClient = Client::factory('<seu-token-aqui>', ['multilojas' => '<id-integra
         $blingClient = Client::factory('<seu-token-aqui>');
         $payload = [...];
         $response = $bling->produtosVariacoes()->gerarCombinacoes($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+## Pedidos Vendas
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas)
+
+### Criar um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $payload = [...];
+        $response = $bling->pedidosVendas()->criar($payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Atualizar um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/put_pedidos_vendas__idPedidoVenda_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $payload = [...];
+        $response = $bling->pedidosVendas()->atualizar($idPedidoVenda, $payload);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Remover um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/delete_pedidos_vendas__idPedidoVenda_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->remover($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Remover múltiplos pedidos de vendas
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/delete_pedidos_vendas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->removerMultiplos([$idPedidoVenda]);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscar um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/get_pedidos_vendas__idPedidoVenda_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->buscar($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscar todos os pedidos de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/get_pedidos_vendas__idPedidoVenda_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $response = $bling->pedidosVendas()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Buscar todos os pedidos de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/get_pedidos_vendas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $response = $bling->pedidosVendas()->buscarTodos();
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Alterar a situação de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/patch_pedidos_vendas__idPedidoVenda__situacoes__idSituacao_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $idSituacao = 123456789;
+        $response = $bling->pedidosVendas()->alterarSituacao($idPedidoVenda, $idSituacao);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Lançar estoque de um pedido de venda especificando o depósito
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__lancar_estoque__idDeposito_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $idDeposito = 123456789;
+        $response = $bling->pedidosVendas()->lancaEstoquePorDeposito($idPedidoVenda, $idDeposito);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Lançar estoque de um pedido de venda no depósito padrão
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__lancar_estoque__idDeposito_)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->lancaEstoque($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Estornar o estoque de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__estornar_estoque)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->estornarEstoque($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Lançar as contas de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__lancar_contas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->lancarContas($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Estornar as contas de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__estornar_contas)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->estornarContas($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Gerar NFE de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__gerar_nfe)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->gerarNfe($idPedidoVenda);
+    } catch (\Exception $e) {
+        // $e->getMessage();
+    }
+```
+
+### Gerar NFCE de um pedido de venda
+[Ver documentação](https://developer.bling.com.br/referencia#/Pedidos%20-%20Vendas/post_pedidos_vendas__idPedidoVenda__gerar_nfce)
+```php
+    use PabloSanches\Bling\Client;
+    
+    try {
+        $blingClient = Client::factory('<seu-token-aqui>');
+        $idPedidoVenda = 123456789;
+        $response = $bling->pedidosVendas()->gerarNfce($idPedidoVenda);
     } catch (\Exception $e) {
         // $e->getMessage();
     }
