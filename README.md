@@ -6,8 +6,8 @@
 Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utilizando a API V3.
 
 Pule para:
-* [Introdução](#Introdução)
 * [Instalação](#Instalação)
+* [Introdução](#Introdução)
 * [Contatos](#Contatos)
   * [Criando um contato](#Criando-um-contato)
   * [Atualizando um contato](#Atualizando-um-contato)
@@ -75,6 +75,14 @@ Pule para:
   * [Estornar as contas de um pedido de venda](#Estornar-as-contas-de-um-pedido-de-venda)
   * [Gerar NFE de um pedido de venda](#Gerar-NFE-de-um-pedido-de-venda)
   * [Gerar NFCE de um pedido de venda](#Gerar-NFCE-de-um-pedido-de-venda)
+
+## Instalação
+
+Você pode instalar o pacote via composer:
+
+```bash
+composer require pablosanches/bling-sdk
+```
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
@@ -144,14 +152,6 @@ use PabloSanches\Bling\Client;
     } catch (\Exception $e) {
         // $e->getMessage();
     }
-```
-
-## Instalação
-
-Você pode instalar o pacote via composer:
-
-```bash
-composer require pablosanches/bling-sdk
 ```
 
 ## Contatos
