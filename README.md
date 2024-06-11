@@ -7,6 +7,7 @@ Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](http
 
 Pule para:
 * [Introdução](#Introdução)
+* [Instalação](#Instalação)
 * [Contatos](#Contatos)
   * [Criando um contato](#Criando-um-contato)
   * [Atualizando um contato](#Atualizando-um-contato)
@@ -143,6 +144,14 @@ use PabloSanches\Bling\Client;
     } catch (\Exception $e) {
         // $e->getMessage();
     }
+```
+
+## Instalação
+
+Você pode instalar o pacote via composer:
+
+```bash
+composer require pablosanches/bling-sdk
 ```
 
 ## Contatos
