@@ -83,7 +83,7 @@ Pule para:
 
 ## Instalação
 
-Você pode instalar o pacote via composer:
+Você pode instalar esta **SDK** via composer:
 
 ```bash
 composer require pablosanches/bling-sdk
