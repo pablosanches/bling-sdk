@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="Bling!" width="400" style="text-align: center;"/>
     <p align="center">
-        <img alt="GitHub Workflow Status (main)" src="[https://img.shields.io/github/actions/workflow/status/openai-php/client/tests.yml?branch=main&label=tests&style=round-square](https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg)">
+        <img alt="GitHub Workflow Status (master)" src="https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg">
      </p>
 </p>
 
