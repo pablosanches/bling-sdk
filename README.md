@@ -1,3 +1,4 @@
+# Bling! - API v3
 <p align="center">
     <img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="Bling!" width="400" style="text-align: center;"/>
     <p align="center">
@@ -6,8 +7,6 @@
 </p>
 
 ------
-
-# Bling! - API v3
 
 Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utilizando a API V3.
 
