@@ -33,7 +33,7 @@ class BlingResponse
         );
     }
 
-    public function hassError(): bool
+    public function hasError(): bool
     {
         if ($this->statusCode >= 200 && $this->statusCode < 300) {
             return false;
@@ -63,7 +63,7 @@ class BlingResponse
 
     public function export(): array
     {
-        if ($this->hassError()) {
+        if ($this->hasError()) {
             return $this->getError();
         }
 
