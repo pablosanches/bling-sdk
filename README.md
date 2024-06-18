@@ -116,10 +116,13 @@ use PabloSanches\Bling\Client;
         var_dump($response->getStatusCode());
         
         // Este método indica se houve algum erro na requisição
-        var_dump($response->isError());
+        var_dump($response->hasError());
         
         // Este método faz um unwrap do elemento error que o bling coloca por padrão em seu objeto de resposta de erros
         var_dump($response->getError());
+        
+        // Este método exporta o conteúdo da resposta, independente se houve erro ou sucesso
+        var_dump($response->export());
     } catch (\Exception $e) {
         // $e->getMessage();
     }
