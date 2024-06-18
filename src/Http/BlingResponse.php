@@ -43,17 +43,22 @@ class BlingResponse
 
     public function getContent(): array
     {
+        if (!is_array($this->content)) {
+            return [$this->content];
+        }
         return $this->content;
     }
 
     public function getData(): array
     {
-        return array_key_exists('data', $this->content) ? $this->content['data'] : [];
+        $content = $this->getContent();
+        return array_key_exists('data', $content) ? $content['data'] : [];
     }
 
     public function getError(): array
     {
-        return array_key_exists('error', $this->content) ? $this->content['error'] : [];
+        $content = $this->getContent();
+        return array_key_exists('error', $content) ? $content['error'] : [];
     }
 
     public function getStatusCode(): int
