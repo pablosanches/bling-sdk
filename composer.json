@@ -7,7 +7,9 @@
   "keywords": [
     "bling",
     "v3",
-    "api"
+    "api",
+    "sdk",
+    "php"
   ],
   "autoload": {
     "psr-4": {

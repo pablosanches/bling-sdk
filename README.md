@@ -1,11 +1,17 @@
-# Bling! - API v3 - !! EM DESENVOLVIMENTO !!
-<img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="Bling!" width="400" style="text-align: center;"/>
+# Bling! - API v3
+<p align="center">
+    <img src="https://developer.bling.com.br/build/assets/developer-0085d380.svg" alt="Bling!" width="400" style="text-align: center;"/>
+    <p align="center">
+        <img alt="GitHub Workflow Status (master)" src="https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg">
+     </p>
+</p>
 
-![Workflow](https://github.com/pablosanches/bling-sdk/actions/workflows/master.yml/badge.svg)
+------
 
 Esta é uma SDK **não** oficial que facilita a integração com o [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utilizando a API V3.
 
 Pule para:
+* [Instalação](#Instalação)
 * [Introdução](#Introdução)
 * [Contatos](#Contatos)
   * [Criando um contato](#Criando-um-contato)
@@ -74,6 +80,14 @@ Pule para:
   * [Estornar as contas de um pedido de venda](#Estornar-as-contas-de-um-pedido-de-venda)
   * [Gerar NFE de um pedido de venda](#Gerar-NFE-de-um-pedido-de-venda)
   * [Gerar NFCE de um pedido de venda](#Gerar-NFCE-de-um-pedido-de-venda)
+
+## Instalação
+
+Você pode instalar esta **SDK** via composer:
+
+```bash
+composer require pablosanches/bling-sdk
+```
 
 ## Introdução
 A API V3 do [Bling!](https://developer.bling.com.br/bling-api#introdu%C3%A7%C3%A3o) utiliza do modelo de autenticação OAuth 2.0, sendo assim, antes de qualquer coisa você precisará registrar um aplicativo em sua conta do Bling! para conseguir realizar todas as etapas de autenticação, você pode saber mais [aqui!](https://developer.bling.com.br/aplicativos#introdu%C3%A7%C3%A3o)
