@@ -6,7 +6,6 @@ use PabloSanches\Bling\Http\BlingResponse;
 use PabloSanches\Bling\Http\HttpMethods;
 use PabloSanches\Bling\Http\Uri;
 use PabloSanches\Bling\Resource\AbstractResource;
-use PabloSanches\Bling\Resource\ProdutosLojas\Dto\FiltrosBuscaDto;
 use PabloSanches\Bling\Resource\ProdutosLojas\Dto\PersistirProdutoLojasRequestDto;
 
 class ProdutosLojas extends AbstractResource
@@ -49,11 +48,9 @@ class ProdutosLojas extends AbstractResource
 
     public function buscarTodos(array $options = []): BlingResponse
     {
-        $queryDto = FiltrosBuscaDto::factory($options);
         return $this->request(
             HttpMethods::GET,
-            Uri::fromPath("/produtos/lojas"),
-            $queryDto
+            Uri::fromPath("/produtos/lojas", $options)
         );
     }
 }

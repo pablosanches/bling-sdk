@@ -8,7 +8,6 @@ use PabloSanches\Bling\Http\Uri;
 use PabloSanches\Bling\Resource\AbstractResource;
 use PabloSanches\Bling\Resource\Estoques\Dto\AtualizarEstoqueRequestDto;
 use PabloSanches\Bling\Resource\Estoques\Dto\BuscarSaldoDepositoRequestDto;
-use PabloSanches\Bling\Resource\Estoques\Dto\BuscarSaldosRequestDto;
 use PabloSanches\Bling\Resource\Estoques\Dto\CriarEstoqueRequestDto;
 
 class Estoques extends AbstractResource
@@ -61,11 +60,9 @@ class Estoques extends AbstractResource
 
     public function buscarTodos(array $options = []): BlingResponse
     {
-        $queryDto = BuscarSaldosRequestDto::factory($options);
         return $this->request(
             HttpMethods::GET,
-            Uri::fromPath('/estoques/saldos', ['idsProdutos' => $queryDto->idsProdutos]),
-            $queryDto
+            Uri::fromPath('/estoques/saldos', $options)
         );
     }
 }

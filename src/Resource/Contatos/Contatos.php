@@ -8,7 +8,6 @@ use PabloSanches\Bling\Http\Uri;
 use PabloSanches\Bling\Resource\AbstractResource;
 use PabloSanches\Bling\Resource\Contatos\Dto\AlterarSituacoesContatoRequestDto;
 use PabloSanches\Bling\Resource\Contatos\Dto\AlteraSituacaoRequestDto;
-use PabloSanches\Bling\Resource\Contatos\Dto\BuscarTodosContatosRequestDto;
 use PabloSanches\Bling\Resource\Contatos\Dto\PersistirContatoRequestDto;
 
 class Contatos extends AbstractResource
@@ -51,11 +50,9 @@ class Contatos extends AbstractResource
 
     public function buscarTodos(array $options = []): BlingResponse
     {
-        $queryDto = BuscarTodosContatosRequestDto::factory($options);
         return $this->request(
             HttpMethods::GET,
-            Uri::fromPath('/contatos'),
-            $queryDto
+            Uri::fromPath('/contatos', $options)
         );
     }
 
