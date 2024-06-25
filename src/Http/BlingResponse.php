@@ -58,7 +58,7 @@ class BlingResponse
     public function getError(): array
     {
         $content = $this->getContent();
-        return array_key_exists('error', $content) ? $content['error'] : [];
+        return array_key_exists('error', $content) ? $content : [];
     }
 
     public function getStatusCode(): int
