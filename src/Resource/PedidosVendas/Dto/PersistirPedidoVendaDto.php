@@ -21,7 +21,7 @@ class PersistirPedidoVendaDto extends AbstractDto
     public ?array $categoria = null;
     public ?array $tributacao = null;
     public array $itens;
-    public ?array $parcelas;
+    public ?array $parcelas = [;
     public ?array $transporte = [];
     public ?array $vendedor = [];
     public ?array $intermediador = [];
