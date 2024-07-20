@@ -11,7 +11,7 @@ class PersistirPedidoVendaDto extends AbstractDto
     public string $data;
     public ?string $dataSaida = null;
     public ?string $dataPrevista = null;
-    public array $contato;
+    public ?array $contato = null;
     public ?array $loja = null;
     public ?string $numeroPedidoCompras = null;
     public ?string $outrasDespesas = null;
@@ -20,7 +20,7 @@ class PersistirPedidoVendaDto extends AbstractDto
     public ?array $desconto = null;
     public ?array $categoria = null;
     public ?array $tributacao = null;
-    public array $itens;
+    public ?array $itens = null;
     public ?array $parcelas = [];
     public ?array $transporte = [];
     public ?array $vendedor = [];
