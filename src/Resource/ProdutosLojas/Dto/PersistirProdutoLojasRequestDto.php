@@ -6,12 +6,12 @@ use PabloSanches\Bling\Resource\Dto\AbstractDto;
 
 class PersistirProdutoLojasRequestDto extends AbstractDto
 {
-    public string $codigo;
+    public ?string $codigo = null;
     public ?float $preco = null;
     public ?float $precoPromocional = null;
-    public array $produto = [];
-    public array $loja = [];
-    public array $fornecedorLoja = [];
-    public array $marcaLoja = [];
-    public array $categoriasProdutos = [];
+    public ?array $produto = [];
+    public ?array $loja = [];
+    public ?array $fornecedorLoja = [];
+    public ?array $marcaLoja = [];
+    public ?array $categoriasProdutos = [];
 }
