@@ -12,7 +12,8 @@ class HttpFactory
     {
         return new Client([
             'base_uri' => Uri::baseUri(),
-            'timeout' => 5.0,
+            'timeout' => 30,
+            'connect_timeout' => 30,
             'http_errors' => false,
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
